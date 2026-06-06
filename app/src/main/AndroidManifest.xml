@@ -35,8 +35,7 @@
 
         <receiver
             android:name=".AlarmReceiver"
-            android:exported="true"
-            android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
+            android:exported="true">
             <intent-filter>
                 <action android:name="com.example.alerm.ALARM_TRIGGER" />
                 <action android:name="android.intent.action.BOOT_COMPLETED" />

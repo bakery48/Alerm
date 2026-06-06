@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Alerm</string>
+    <string name="add_alarm">Add Alarm</string>
+    <string name="alarm_label">Label (optional)</string>
+    <string name="repeat_days">Repeat</string>
+    <string name="alarm_sound">Alarm Sound</string>
+    <string name="select_music">Select Music File</string>
+    <string name="save">Save</string>
+    <string name="delete">Delete</string>
+    <string name="delete_alarm">Delete Alarm</string>
+    <string name="delete_alarm_confirm">Are you sure you want to delete this alarm?</string>
+    <string name="alarm_saved">Alarm saved</string>
+    <string name="alarm_deleted">Alarm deleted</string>
+    <string name="max_alarms_reached">Maximum of 5 alarms reached</string>
+    <string name="toggle_alarm">Toggle alarm on/off</string>
+    <string name="widget_description">Shows up to 5 alarms with ON/OFF toggle</string>
+
+    <!-- Days of week -->
+    <string name="mon">Mon</string>
+    <string name="tue">Tue</string>
+    <string name="wed">Wed</string>
+    <string name="thu">Thu</string>
+    <string name="fri">Fri</string>
+    <string name="sat">Sat</string>
+    <string name="sun">Sun</string>
+</resources>
