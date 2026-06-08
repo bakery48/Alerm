@@ -15,6 +15,7 @@
     <string name="max_alarms_reached">Maximum of 5 alarms reached</string>
     <string name="toggle_alarm">Toggle alarm on/off</string>
     <string name="widget_description">Shows up to 5 alarms with ON/OFF toggle</string>
+    <string name="single_widget_description">Shows a single alarm with ON/OFF toggle</string>
 
     <!-- Days of week -->
     <string name="mon">Mon</string>
