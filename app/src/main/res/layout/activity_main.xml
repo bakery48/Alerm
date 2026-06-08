@@ -19,38 +19,37 @@
             android:title="@string/app_name"
             android:titleTextColor="@android:color/white" />
 
+        <!-- Stop alarm banner: visible only when AlarmService is running -->
+        <LinearLayout
+            android:id="@+id/stopAlarmBanner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="#FFD32F2F"
+            android:gravity="center_vertical"
+            android:padding="12dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="アラームが鳴っています"
+                android:textColor="#FFFFFFFF"
+                android:textStyle="bold"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/btnStopAlarm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="停止"
+                android:textColor="#FFD32F2F"
+                android:backgroundTint="#FFFFFFFF" />
+
+        </LinearLayout>
+
     </com.google.android.material.appbar.AppBarLayout>
-
-    <!-- Stop alarm banner: visible only when AlarmService is running -->
-    <LinearLayout
-        android:id="@+id/stopAlarmBanner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="#FFD32F2F"
-        android:gravity="center"
-        android:padding="12dp"
-        android:visibility="gone"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="アラームが鳴っています"
-            android:textColor="#FFFFFFFF"
-            android:textStyle="bold"
-            android:textSize="15sp" />
-
-        <Button
-            android:id="@+id/btnStopAlarm"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="停止"
-            android:textColor="#FFD32F2F"
-            android:backgroundTint="#FFFFFFFF" />
-
-    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
