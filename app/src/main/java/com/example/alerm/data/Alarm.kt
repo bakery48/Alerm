@@ -17,7 +17,8 @@ data class Alarm(
     /** Bitmask of days: Mon=1, Tue=2, Wed=4, Thu=8, Fri=16, Sat=32, Sun=64 */
     val days: Int = 0,
     val isEnabled: Boolean = true,
-    val musicUri: String? = null
+    val musicUri: String? = null,
+    val headphoneOnly: Boolean = false
 ) {
     companion object {
         const val MON = 1

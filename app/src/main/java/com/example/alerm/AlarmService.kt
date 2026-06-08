@@ -8,6 +8,8 @@ import android.app.Service
 import android.content.Context
 import android.content.Intent
 import android.media.AudioAttributes
+import android.media.AudioDeviceInfo
+import android.media.AudioManager
 import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Handler
@@ -49,6 +51,13 @@ class AlarmService : Service() {
         val musicUriString = intent?.getStringExtra("music_uri")
         val alarmHour = intent?.getIntExtra("alarm_hour", 8) ?: 8
         val alarmMinute = intent?.getIntExtra("alarm_minute", 0) ?: 0
+        val headphoneOnly = intent?.getBooleanExtra("headphone_only", false) ?: false
+
+        if (headphoneOnly && !isHeadphoneConnected()) {
+            Log.d(TAG, "Headphone-only mode: no headphone connected, skipping alarm")
+            stopSelf()
+            return START_NOT_STICKY
+        }
 
         val notification = buildNotification(alarmLabel)
         startForeground(NOTIFICATION_ID, notification)
@@ -177,6 +186,18 @@ class AlarmService : Service() {
         }
         val nm = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         nm.createNotificationChannel(channel)
+    }
+
+    private fun isHeadphoneConnected(): Boolean {
+        val am = getSystemService(Context.AUDIO_SERVICE) as AudioManager
+        return am.getDevices(AudioManager.GET_DEVICES_OUTPUTS).any {
+            it.type == AudioDeviceInfo.TYPE_WIRED_HEADSET ||
+            it.type == AudioDeviceInfo.TYPE_WIRED_HEADPHONES ||
+            it.type == AudioDeviceInfo.TYPE_BLUETOOTH_A2DP ||
+            it.type == AudioDeviceInfo.TYPE_BLUETOOTH_SCO ||
+            it.type == AudioDeviceInfo.TYPE_BLE_HEADSET ||
+            it.type == AudioDeviceInfo.TYPE_BLE_SPEAKER
+        }
     }
 
     override fun onBind(intent: Intent?): IBinder? = null

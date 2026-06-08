@@ -73,6 +73,7 @@ class AlarmReceiver : BroadcastReceiver() {
                     putExtra("music_uri", alarm.musicUri)
                     putExtra("alarm_hour", alarm.hour)
                     putExtra("alarm_minute", alarm.minute)
+                    putExtra("headphone_only", alarm.headphoneOnly)
                 }
                 ContextCompat.startForegroundService(context, serviceIntent)
 

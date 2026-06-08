@@ -110,6 +110,7 @@ class AlarmEditActivity : AppCompatActivity() {
         binding.cbFri.isChecked = (alarm.days and Alarm.FRI) != 0
         binding.cbSat.isChecked = (alarm.days and Alarm.SAT) != 0
         binding.cbSun.isChecked = (alarm.days and Alarm.SUN) != 0
+        binding.switchHeadphoneOnly.isChecked = alarm.headphoneOnly
 
         // Show selected music file name
         if (!alarm.musicUri.isNullOrBlank()) {
@@ -164,6 +165,7 @@ class AlarmEditActivity : AppCompatActivity() {
         val minute = binding.timePicker.minute
         val label = binding.etLabel.text.toString().trim()
         val days = buildDaysBitmask()
+        val headphoneOnly = binding.switchHeadphoneOnly.isChecked
 
         lifecycleScope.launch {
             val alarm = if (existingAlarm != null) {
@@ -173,7 +175,8 @@ class AlarmEditActivity : AppCompatActivity() {
                     minute = minute,
                     days = days,
                     musicUri = selectedMusicUri,
-                    isEnabled = true
+                    isEnabled = true,
+                    headphoneOnly = headphoneOnly
                 )
             } else {
                 val count = withContext(Dispatchers.IO) { repository.getAlarmCount() }
@@ -187,7 +190,8 @@ class AlarmEditActivity : AppCompatActivity() {
                     minute = minute,
                     days = days,
                     musicUri = selectedMusicUri,
-                    isEnabled = true
+                    isEnabled = true,
+                    headphoneOnly = headphoneOnly
                 )
             }
 
