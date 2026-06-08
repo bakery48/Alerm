@@ -29,7 +29,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="32sp"
                 android:textStyle="bold"
-                android:textColor="#FF000000"
+                android:textColor="?attr/colorOnSurface"
                 android:text="8:00 AM" />
 
             <TextView
@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
                 android:textSize="14sp"
-                android:textColor="#FF444444"
+                android:textColor="?attr/colorOnSurfaceVariant"
                 android:text="Alarm" />
 
             <TextView
@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
                 android:textSize="12sp"
-                android:textColor="#FF444444"
+                android:textColor="?attr/colorOnSurfaceVariant"
                 android:text="Weekdays" />
 
         </LinearLayout>
