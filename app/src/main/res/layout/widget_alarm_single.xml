@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/widget_background"
+    android:padding="10dp"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/swTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFFFF"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:text="08:00" />
+
+    <TextView
+        android:id="@+id/swLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#CCFFFFFF"
+        android:textSize="11sp"
+        android:text="Alarm"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:maxWidth="100dp" />
+
+    <TextView
+        android:id="@+id/swStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFFFF"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:layout_marginTop="4dp"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="2dp"
+        android:background="@drawable/widget_status_bg"
+        android:text="ON" />
+
+</LinearLayout>

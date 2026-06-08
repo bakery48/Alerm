@@ -30,6 +30,7 @@ class AlarmViewModel(application: Application) : AndroidViewModel(application) {
                 AlarmScheduler.cancelAlarm(getApplication(), updated)
             }
             AlarmWidgetProvider.updateAllWidgets(getApplication())
+            AlarmSingleWidgetProvider.refreshAll(getApplication())
         }
     }
 
@@ -38,6 +39,7 @@ class AlarmViewModel(application: Application) : AndroidViewModel(application) {
             AlarmScheduler.cancelAlarm(getApplication(), alarm)
             repository.deleteAlarm(alarm)
             AlarmWidgetProvider.updateAllWidgets(getApplication())
+            AlarmSingleWidgetProvider.refreshAll(getApplication())
         }
     }
 

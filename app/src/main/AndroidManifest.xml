@@ -67,6 +67,26 @@
             android:exported="false"
             android:foregroundServiceType="mediaPlayback" />
 
+        <receiver
+            android:name=".AlarmSingleWidgetProvider"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="com.example.alerm.SINGLE_WIDGET_TOGGLE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/alarm_single_widget_info" />
+        </receiver>
+
+        <activity
+            android:name=".AlarmWidgetConfigActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>
