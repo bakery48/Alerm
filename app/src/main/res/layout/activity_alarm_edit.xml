@@ -56,6 +56,7 @@
             android:layout_marginTop="16dp"
             android:text="@string/repeat_days"
             android:textAppearance="?attr/textAppearanceSubtitle1"
+            android:textColor="#FF000000"
             android:textStyle="bold" />
 
         <LinearLayout
@@ -172,6 +173,7 @@
             android:layout_marginTop="16dp"
             android:text="@string/alarm_sound"
             android:textAppearance="?attr/textAppearanceSubtitle1"
+            android:textColor="#FF000000"
             android:textStyle="bold" />
 
         <Button
