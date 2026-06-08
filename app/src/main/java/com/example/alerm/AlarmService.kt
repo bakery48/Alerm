@@ -28,10 +28,13 @@ class AlarmService : Service() {
         const val NOTIFICATION_ID = 1001
         const val ACTION_STOP = "com.example.alerm.ACTION_STOP_ALARM"
         private const val MAX_DURATION_MS = 10 * 60 * 1000L // 10 minutes
+
+        @Volatile var isRunning = false
     }
 
     override fun onCreate() {
         super.onCreate()
+        isRunning = true
         createNotificationChannel()
     }
 
@@ -173,6 +176,7 @@ class AlarmService : Service() {
     override fun onBind(intent: Intent?): IBinder? = null
 
     override fun onDestroy() {
+        isRunning = false
         stopAlarm()
         super.onDestroy()
     }

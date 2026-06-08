@@ -1,10 +1,16 @@
 package com.example.alerm
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.alerm.databinding.ActivityMainBinding
@@ -16,6 +22,10 @@ class MainActivity : AppCompatActivity() {
     private val viewModel: AlarmViewModel by viewModels()
     private lateinit var adapter: AlarmAdapter
 
+    private val notificationPermissionLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { /* 許可/拒否どちらでも続行 */ }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -25,7 +35,14 @@ class MainActivity : AppCompatActivity() {
 
         setupRecyclerView()
         setupFab()
+        setupStopBanner()
         observeAlarms()
+        requestNotificationPermission()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        updateStopBanner()
     }
 
     private fun setupRecyclerView() {
@@ -57,6 +74,30 @@ class MainActivity : AppCompatActivity() {
                 // Disable FAB when 5 alarms exist
                 binding.fabAddAlarm.isEnabled = alarms.size < 5
                 binding.fabAddAlarm.alpha = if (alarms.size < 5) 1f else 0.4f
+            }
+        }
+    }
+
+    private fun setupStopBanner() {
+        binding.btnStopAlarm.setOnClickListener {
+            val intent = Intent(this, AlarmService::class.java).apply {
+                action = AlarmService.ACTION_STOP
+            }
+            startService(intent)
+            updateStopBanner()
+        }
+    }
+
+    private fun updateStopBanner() {
+        binding.stopAlarmBanner.visibility =
+            if (AlarmService.isRunning) View.VISIBLE else View.GONE
+    }
+
+    private fun requestNotificationPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS)
+                != PackageManager.PERMISSION_GRANTED) {
+                notificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
             }
         }
     }
