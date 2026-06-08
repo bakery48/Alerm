@@ -47,11 +47,17 @@ class AlarmService : Service() {
         val alarmId = intent?.getIntExtra("alarm_id", -1) ?: -1
         val alarmLabel = intent?.getStringExtra("alarm_label") ?: "Alarm"
         val musicUriString = intent?.getStringExtra("music_uri")
+        val alarmHour = intent?.getIntExtra("alarm_hour", 8) ?: 8
+        val alarmMinute = intent?.getIntExtra("alarm_minute", 0) ?: 0
 
         val notification = buildNotification(alarmLabel)
         startForeground(NOTIFICATION_ID, notification)
 
         playMusic(musicUriString)
+
+        // Bring alert screen to front
+        val alertIntent = AlarmAlertActivity.createIntent(this, alarmLabel, alarmHour, alarmMinute)
+        startActivity(alertIntent)
 
         // Auto-stop after MAX_DURATION_MS
         val runnable = Runnable { stopAlarm() }
