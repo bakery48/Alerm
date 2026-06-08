@@ -90,14 +90,14 @@ class AlarmEditActivity : AppCompatActivity() {
     }
 
     private fun setupNewAlarm() {
-        binding.timePicker.setIs24HourView(false)
+        binding.timePicker.setIs24HourView(true)
         binding.timePicker.hour = 8
         binding.timePicker.minute = 0
         binding.btnDelete.isEnabled = false
     }
 
     private fun populateFields(alarm: Alarm) {
-        binding.timePicker.setIs24HourView(false)
+        binding.timePicker.setIs24HourView(true)
         binding.timePicker.hour = alarm.hour
         binding.timePicker.minute = alarm.minute
         binding.etLabel.setText(alarm.label)

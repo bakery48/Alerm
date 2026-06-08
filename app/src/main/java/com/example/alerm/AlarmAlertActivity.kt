@@ -70,9 +70,5 @@ class AlarmAlertActivity : AppCompatActivity() {
         finish()
     }
 
-    private fun formatTime(hour: Int, minute: Int): String {
-        val h = if (hour % 12 == 0) 12 else hour % 12
-        val amPm = if (hour < 12) "AM" else "PM"
-        return "%d:%02d %s".format(h, minute, amPm)
-    }
+    private fun formatTime(hour: Int, minute: Int): String = "%02d:%02d".format(hour, minute)
 }
