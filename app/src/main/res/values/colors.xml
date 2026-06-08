@@ -28,7 +28,7 @@
 
     <!-- Day checkbox -->
     <color name="day_selected_bg">#FF6750A4</color>
-    <color name="day_unselected_bg">#FFE8DEF8</color>
+    <color name="day_unselected_bg">#FF79747E</color>
     <color name="day_selected_text">#FFFFFFFF</color>
-    <color name="day_unselected_text">#FF1C1B1F</color>
+    <color name="day_unselected_text">#FFFFFFFF</color>
 </resources>
